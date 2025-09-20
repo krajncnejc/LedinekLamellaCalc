@@ -43,7 +43,7 @@ partial class Program
         List<lamelGroup>? bestSolution = null;
         int bestTotalLong = int.MaxValue;
 
-        // lokalna rekurzija
+        // lokalna rekurzija, kjer iščemo najboljše/primerne plošče
         void Search(int remaining, List<lamelGroup> currentGroup)
         {
             if (remaining == 0)
@@ -62,7 +62,6 @@ partial class Program
             foreach (var g in allPossibleGroups)
             {
                 currentGroup.Add(g);
-                // odštejemo število kratkih lamel, ne samo dolgih
                 Search(remaining - g.totalLamShort, currentGroup);
                 currentGroup.RemoveAt(currentGroup.Count - 1);
             }
